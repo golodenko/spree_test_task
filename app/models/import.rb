@@ -1,28 +1,23 @@
 class Import < ApplicationRecord
-  require 'csv'
 
   has_attached_file :file
   validates_attachment_content_type :file, content_type: 'text/plain'
 
-  # # TODO: do dependency injection for expandability
   def import_products(parser)
     create_aliases_for_mappings
     parser.parse(file.path).each do |params|
-      product = create_product(only_valid_params(params))
+      product = create_product(only_valid_params(params.dup))
       create_dependent_objects(product, params) if product.save!
     end
-    abort('ss')
   end
 
   def create_dependent_objects(product, params)
-    abort(params.to_s)
     fill_stock(product, params[CSV_IMPORT_SETTINGS[:stock_quantity_field]])
     assign_category(product, params[CSV_IMPORT_SETTINGS[:category_field]])
   end
 
-  def only_valid_params(a)
-    b = a
-    b.delete_if { |k, v| k == CSV_IMPORT_SETTINGS[:stock_quantity_field] || k == CSV_IMPORT_SETTINGS[:category_field] }
+  def only_valid_params(params)
+    params.delete_if { |k, v| k == CSV_IMPORT_SETTINGS[:stock_quantity_field] || k == CSV_IMPORT_SETTINGS[:category_field] }
   end
 
   def create_product(params)
@@ -53,7 +48,6 @@ class Import < ApplicationRecord
   end
 
   def fill_stock(product, stock)
-    abort(stock)
     product.master.stock_items.first_or_create.set_count_on_hand(stock)
   end
 
@@ -62,8 +56,9 @@ class Import < ApplicationRecord
   end
 
   def assign_category(product_id, category)
-    puts 'assign category: #{category}'
-    puts 'for item #:' + product_id.to_s
+    # TODO: implement category updates
+    # puts 'assign category: #{category}'
+    # puts 'for item #:' + product_id.to_s
   end
 
   def generate_unique_slug(current_slug, num = 1)

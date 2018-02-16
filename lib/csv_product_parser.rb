@@ -1,3 +1,5 @@
+require 'csv'
+
 class CSVProductParser
   def parse(csv_file)
     hash_params = []
