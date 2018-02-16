@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Known issues / further plans estimated for 5-8 more hours
+- full unit-testing
+- product category assignment
+- moving to admin namespace and styling of form to fit admin-panel
+- working options "override duplicates" and "notify on finish"
+- delayed job monitoring
 
-Things you may want to cover:
+p.s. I really think this is a bit more than few hours task ;-) But anyway I've enjoyed doing research and implementing functionality
 
-* Ruby version
+Nikita
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
