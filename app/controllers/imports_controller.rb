@@ -28,7 +28,7 @@ class ImportsController < ApplicationController
 
     respond_to do |format|
       if @import.save
-        @import.delay.import_products(CSVProductParser.new)
+        @import.delay.import_products(CSVProductParser)
         format.html { redirect_to @import, notice: 'Import was successfully created.' }
         format.json { render :show, status: :created, location: @import }
       else
