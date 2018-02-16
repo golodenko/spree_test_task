@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Create category:</strong>
+  <%= @import.create_category %>
+</p>
+
+<p>
+  <strong>Override existing:</strong>
+  <%= @import.override_existing %>
+</p>
+
+<p>
+  <strong>Notify on finish:</strong>
+  <%= @import.notify_on_finish %>
+</p>
+
+<%= link_to 'Edit', edit_import_path(@import) %> |
+<%= link_to 'Back', imports_path %>
