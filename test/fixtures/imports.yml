@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  create_category: false
+  override_existing: false
+  notify_on_finish: false
+
+two:
+  create_category: false
+  override_existing: false
+  notify_on_finish: false

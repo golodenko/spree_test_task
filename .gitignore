@@ -17,5 +17,7 @@
 /node_modules
 /yarn-error.log
 /config/database.yml
+/public/system/imports/
 
 .byebug_history
+.idea
