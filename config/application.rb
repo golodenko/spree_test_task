@@ -20,6 +20,7 @@ module SpreeTestTask
   class Application < Rails::Application
 
     config.autoload_paths << Rails.root.join("lib")
+    config.active_job.queue_adapter = :delayed_job
 
     config.to_prepare do
       # Load application's model / class decorators
