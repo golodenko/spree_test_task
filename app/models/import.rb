@@ -5,7 +5,7 @@ class Import < ApplicationRecord
 
   def import_products(parser)
     create_aliases_for_mappings
-    parser.parse(file.path).each do |params|
+    parser.new(file.path).parse.each do |params|
       product = create_product(only_valid_params(params.dup))
       create_dependent_objects(product, params) if product.save!
     end
